@@ -82,11 +82,13 @@ body {
   font-size: 14px;
   outline: none;
   background-color: white;
+  color: #333333;
+  caret-color: #315b46;
 }
 
-.form-group input:focus {
-  border-color: #315b46;
-  box-shadow: 0 0 0 2px rgba(49, 91, 70, 0.12);
+.form-group input:placeholder {
+  border-color: #999999;
+  opacity: 1;
 }
 
 .login-options {
@@ -169,4 +171,22 @@ body {
   .login-options {
     font-size: 12px;
   }
+}
+
+/* Register */
+.text-button {
+  border: none;
+  background: none;
+  color: #315b46;
+  font-size: inherit;
+  font-weight: 6000;
+  cursor: pointer;
+}
+
+.text-button:hover {
+  text-decoration: underline;
+}
+
+.login-card {
+  margin: 20px 0;
 }

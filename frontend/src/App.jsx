@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import './App.css';
+import Register from './pages/Register';
 
 function App() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [isRegisting, setIsRegistering] = useState(false);
 
   function handleLogin(event) {
     event.preventDefault();
@@ -15,6 +17,10 @@ function App() {
       return;
     }
     setMessage ('Login form is ready! Backend authentication will be connected later.');
+  }
+
+  if (isRegisting) {
+    return <Register onBackToLogin={() => setIsRegistering(false)}/>;
   }
 
   return (
@@ -79,7 +85,10 @@ function App() {
         </form>
 
         <div className="signup-link">
-          Don't have an account? <a href="#register">Create one</a>
+          Don't have an account? {' '}
+          <button type="button" className="text-button" onClick={() => setIsRegistering(true)}>
+            Create One
+          </button>
         </div>
       </section>
     </main>
