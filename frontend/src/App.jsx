@@ -1,13 +1,37 @@
 import { useState } from 'react';
 import './App.css';
 import Register from './pages/Register';
+import Home from './pages/Home';
+import Animals from './pages/Animals';
 
 function App() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const [isRegisting, setIsRegistering] = useState(false);
+  const [isRegistering, setIsRegistering] = useState(false);
+  const [currentPage, setCurrentPage] = useState('login');
+
+  if (currentPage === 'home') {
+    return (
+      <Home
+        onNavigate={(page, data) => {
+          if (page === 'home') {
+            setCurrentPage('home');
+          }
+
+          if (page === 'animal-details') {
+            console.log('Selected animal:', data);
+          }
+        }}
+      onBrowseAnimals={() => setCurrentPage('animals')}
+      />
+    );
+  }
+
+  if (currentPage === 'animals') {
+    return <Animal />;
+  }
 
   function handleLogin(event) {
     event.preventDefault();
@@ -16,10 +40,11 @@ function App() {
       setMessage('Please enter your email and password.');
       return;
     }
-    setMessage ('Login form is ready! Backend authentication will be connected later.');
+    /* setMessage ('Login form is ready! Backend authentication will be connected later.'); <- This will be used later */
+    setCurrentPage('home');
   }
 
-  if (isRegisting) {
+  if (isRegistering) {
     return <Register onBackToLogin={() => setIsRegistering(false)}/>;
   }
 

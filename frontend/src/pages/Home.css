@@ -1,0 +1,196 @@
+* {
+    box-sizing: border-box;
+}
+
+.home-page {
+    min-height: 100vh;
+    background-color: #ede9df;
+}
+
+/* Navigation */
+.navbar {
+    width: 100%;
+    min-height: 100px;
+    padding: 20px 6%;
+    background-color: #315b46;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.navbar-brand {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.navbar-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+
+.navbar-links button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.navbar-links button:hover {
+    text-decoration: underline;
+}
+
+/* Main Content */
+.home-content {
+    width: min(1200px, 90%);
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.home-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.home-heading h1 {
+    color: #315b46;
+    font-size: clamp(25px, 3vw, 34px);
+    margin-bottom: 10px;
+}
+
+.home-heading p {
+    color: #777;
+    font-size: 15px;
+}
+
+/* Search */
+.home-search {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto 40px;
+    max-width: 650px;
+}
+
+.home-search input {
+    flex: 1;
+    min-width: 0;
+    padding: 13px 15px;
+    border: 1px solid #d5d5d0;
+    border-radius: 7px;
+    background: white;
+    color: #333;
+    font-size: 14px;
+}
+
+.home-search input::placeholder {
+    color: #999;
+}
+
+.home-search button {
+    padding: 13px 25px;
+    border: none;
+    border-radius: 7px;
+    background: #315b46;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.home-search button:hover {
+        background: #244634;
+}
+
+/* Animal Cards */
+.featured-animals {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.home-animal-card {
+    min-width: 0;
+    overflow: hidden;
+    background: #fffefa;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+.home-aniaml-card img {
+    display: block;
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.home-animal.info {
+    padding: 20px;
+}
+
+.home-animal-info h2 {
+    color: #315b46;
+    font-size: 21px;
+    margin-top: 8px;
+}
+
+.home-animal-info p {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.home-animal-info button {
+    width: 100%;
+    padding: 11px;
+    border: none;
+    border-radius: 6px;
+    background: #315b46;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.home-animal-info button:hover {
+    background: #244634;
+}
+
+.empty-search {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #777;
+}
+
+/* Responsive Layout */
+@media (max-width: 850px) {
+    .navbar {
+        justify-content: center;
+    }
+
+    .navbar-links {
+        justify-content: center;
+        gap: 18px;
+    }
+
+    .featured-animals {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 500px) {
+    .featured-animals {
+        grid-template-columns: 1fr;
+    }
+
+    .home-search {
+        flex-direction: column
+    }
+
+    .home-search button {
+        width: 100%;
+    }
+}
