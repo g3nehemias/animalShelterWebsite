@@ -1,0 +1,173 @@
+.my-applications-page {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #ede9df;
+}
+
+/* Navigation */
+.navbar {
+    width: 100%;
+    min-height: 120px;
+    padding: 20px 6%;
+    background-color: #315B46;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    box-sizing: border-box;
+}
+
+.navbar-brand {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.navbar-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 35px;
+}
+
+.navbar-links button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.navbar-links button:hover {
+    text-decoration: underline;
+}
+
+/* Main Content */
+.my-applications-content {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 45px 5%;
+    box-sizing: border-box;
+}
+
+/* Heading */
+.my-applications-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.my-applications-header h1 {
+    color: #315B46;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.my-applications-header p {
+    color: #777777;
+    font-size: 16px;
+}
+
+/* Application List */
+.application-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.application-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background-color: #fffefa;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.application-card-info h2 {
+    color: #315B46;
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.application-card-info p {
+    color: #777777;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* Application Status */
+.status {
+    display: inline-block;
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.status.accepted {
+    background-color: #ddefe0;
+    color: #28623a;
+}
+
+.status.pending {
+    background-color: #fff0ce;
+    color: #946b16;
+}
+
+.status.rejected {
+    background-color: #f5ddda;
+    color: #a33a32;
+}
+
+/* Empty Applications */
+.no-applications {
+    background-color: #FFFEFA;
+    text-align: center;
+    padding: 50px 25px;
+    border-radius: 12px;
+}
+
+.no-applications h2 {
+    color: #315B46;
+    margin-bottom: 12px;
+}
+
+.no-applications p {
+    color: #777777;
+    margin-bottom: 20px;
+}
+
+.no-applications button {
+    background-color: #315B46;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 22px;
+    cursor: pointer;
+}
+
+.no-applications button:hover {
+    background-color: #244534;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .my-applications-header h1 {
+        font-size: 26px;
+    }
+
+    .application-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 22px;
+    }
+
+    .navbar-links {
+        gap: 15px;
+    }
+}

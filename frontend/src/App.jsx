@@ -4,6 +4,8 @@ import Register from './pages/Register';
 import Home from './pages/Home';
 import Animals from './pages/Animals';
 import AnimalDetails from './pages/AnimalDetails';
+import AdoptionApplication from './pages/AdoptionApplication';
+import MyApplications from './pages/MyApplications';
 
 function App() {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,6 +15,29 @@ function App() {
   const [isRegistering, setIsRegistering] = useState(false);
   const [currentPage, setCurrentPage] = useState('login');
   const [selectedAnimal, setSelectedAnimal] = useState(null);
+  const [applications, setApplications] = useState([
+    {
+        id: 101,
+        animalName: 'Buddy',
+        animalId: 1,
+        date: '11/02/2026',
+        status: 'Accepted'
+    },
+    {
+        id: 102,
+        animalName: 'Luna',
+        animalId: 2,
+        date: '11/08/2026',
+        status: 'Pending'
+    },
+    {
+        id: 103,
+        animalName: 'Max',
+        animalId: 3,
+        date: '10/25/2026',
+        status: 'Rejected'
+    }
+]);
 
   if (currentPage === 'home') {
     return (
@@ -49,6 +74,31 @@ if (currentPage === 'animal-details') {
     return (
         <AnimalDetails
             animal={selectedAnimal}
+            onNavigate={(page) => setCurrentPage(page)}
+        />
+    );
+}
+
+if (currentPage === 'application') {
+    return (
+        <AdoptionApplication
+            animal={selectedAnimal}
+            onNavigate={(page) => setCurrentPage(page)}
+            onSubmitApplication={(application) => {
+                setApplications((previousApplications) => [
+                    application,
+                    ...previousApplications
+                ]);
+                setCurrentPage('applications');
+            }}
+        />
+    );
+}
+
+if (currentPage === 'applications') {
+    return (
+        <MyApplications
+            applications={applications}
             onNavigate={(page) => setCurrentPage(page)}
         />
     );

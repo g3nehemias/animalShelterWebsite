@@ -6,6 +6,9 @@ const featuredAnimals = [
         name: 'Buddy',
         species: 'Dog',
         breed: 'Golden Retriever',
+        age: '2 years',
+        gender: 'Male',
+        size: 'Large',
         image: 'https://images.unsplash.com/photo-1633722715463-d30f4f325e24?w=600'
     },
     {
@@ -13,6 +16,9 @@ const featuredAnimals = [
         name: 'Luna',
         species: 'Cat',
         breed: 'Domestic Shorthair',
+        age: '1 year',
+        gender: 'Female',
+        size: 'Small',
         image: 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=600'
     },
     {
@@ -20,6 +26,9 @@ const featuredAnimals = [
         name: 'Max',
         species: 'Dog',
         breed: 'German Shepherd',
+        age: '3 years',
+        gender: 'Male',
+        size: 'Large',
         image: 'https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=600'
     }
 ];

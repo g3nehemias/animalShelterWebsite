@@ -53,7 +53,7 @@ function AnimalDetails({ animal, onNavigate }) {
 
                         <button
                             className="adopt-button"
-                            onClick={() => onNavigate('applications')}
+                            onClick={() => onNavigate('application')}
                         >
                             Apply to Adopt
                         </button>
