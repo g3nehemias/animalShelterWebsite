@@ -3,6 +3,7 @@ import './App.css';
 import Register from './pages/Register';
 import Home from './pages/Home';
 import Animals from './pages/Animals';
+import AnimalDetails from './pages/AnimalDetails';
 
 function App() {
   const [showPassword, setShowPassword] = useState(false);
@@ -11,33 +12,47 @@ function App() {
   const [message, setMessage] = useState('');
   const [isRegistering, setIsRegistering] = useState(false);
   const [currentPage, setCurrentPage] = useState('login');
+  const [selectedAnimal, setSelectedAnimal] = useState(null);
 
   if (currentPage === 'home') {
     return (
-      <Home
-        onNavigate={(page, data) => {
-          if (page === 'home') {
-            setCurrentPage('home');
-          }
-
-          if (page === 'animal-details') {
-            console.log('Selected animal:', data);
-          }
-        }}
-        onBrowseAnimals={() => setCurrentPage('animals')}
-      />
+        <Home
+            onNavigate={(page, data) => {
+                if (page === 'animal-details') {
+                    setSelectedAnimal(data);
+                    setCurrentPage('animal-details');
+                } else {
+                    setCurrentPage(page);
+                }
+            }}
+            onBrowseAnimals={() => setCurrentPage('animals')}
+        />
     );
-  }
+}
 
-  if (currentPage === 'animals') {
+if (currentPage === 'animals') {
     return (
-      <Animals
-        onNavigate={(page) => {
-          setCurrentPage(page);
-        }}
-      />
+        <Animals
+            onNavigate={(page, data) => {
+                if (page === 'animal-details') {
+                    setSelectedAnimal(data);
+                    setCurrentPage('animal-details');
+                } else {
+                    setCurrentPage(page);
+                }
+            }}
+        />
     );
-  }
+}
+
+if (currentPage === 'animal-details') {
+    return (
+        <AnimalDetails
+            animal={selectedAnimal}
+            onNavigate={(page) => setCurrentPage(page)}
+        />
+    );
+}
 
   function handleLogin(event) {
     event.preventDefault();

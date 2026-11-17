@@ -153,7 +153,10 @@ function Animals({ onNavigate }) {
                                     <p>{animal.age} {animal.gender}</p>
                                     <p>{animal.size} {animal.species}</p>
 
-                                    <button type="button">
+                                    <button 
+                                        type="button"
+                                        onClick={() => onNavigate('animal-details', animal)}
+                                    >
                                         View Details
                                     </button>
                                 </div>
