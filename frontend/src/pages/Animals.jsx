@@ -1,70 +1,7 @@
 import { useState } from 'react';
 import './Animals.css';
 
-const animals = [
-    {
-        id: 1,
-        name: 'Buddy',
-        species: 'Dog',
-        breed: 'Golden Retriever',
-        age: '2 years',
-        gender: 'Male',
-        size: 'Large',
-        image: 'https://images.unsplash.com/photo-1633722715463-d30f4f325e24?w=600'
-    },
-    {
-        id: 2,
-        name: 'Luna',
-        species: 'Cat',
-        breed: 'Domestic Shorthair',
-        age: '1 year',
-        gender: 'Female',
-        size: 'Small',
-        image: 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=600'
-    },
-    {
-        id: 3,
-        name: 'Max',
-        species: 'Dog',
-        breed: 'German Shepherd',
-        age: '3 years',
-        gender: 'Male',
-        size: 'Large',
-        image: 'https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=600'
-    },
-    {
-        id: 4,
-        name: 'Bella',
-        species: 'Dog',
-        breed: 'Beagle',
-        age: '8 months',
-        gender: 'Female',
-        size: 'Medium',
-        image: 'https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=600'
-    },
-    {
-        id: 5,
-        name: 'Oliver',
-        species: 'Cat',
-        breed: 'Tabby',
-        age: '2 years',
-        gender: 'Male',
-        size: 'Small',
-        image: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600'
-    },
-    {
-        id: 6,
-        name: 'Charlie',
-        species: 'Dog',
-        breed: 'Labrador Retriever',
-        age: '4 years',
-        gender: 'Male',
-        size: 'Large',
-        image: 'https://images.unsplash.com/photo-1552053831-71594a27632d?w=600'
-    }
-];
-
-function Animals({ onNavigate }) {
+function Animals({ onNavigate, animals }) {
     const [search, setSearch] = useState('');
     const [speciesFilter, setSpeciesFilter] = useState('All');
     const [sizeFilter, setSizeFilter] = useState('All');

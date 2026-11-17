@@ -1,0 +1,262 @@
+.animal-management-tools {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.animal-management-tools input {
+    flex: 1;
+    min-width: 220px;
+}
+
+.animal-management-tools input,
+.animal-management-tools select {
+    padding: 12px;
+    border: 1px solid #d4d0c5;
+    border-radius: 6px;
+    background-color: #fffefa;
+    color: #333333;
+}
+
+.archive-toggle-button,
+.add-animal-button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    background-color: #315b46;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.add-animal-button:hover,
+.archive-toggle-button:hover {
+    background-color: #224735;
+}
+
+.animal-form-card {
+    background-color: #fffefa;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.animal-form-card h2 {
+    color: #315b46;
+    margin-bottom: 22px;
+}
+
+.animal-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.animal-form-grid > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.animal-form-grid label {
+    color: #315b46;
+    font-weight: 600;
+}
+
+.animal-form-grid input,
+.animal-form-grid select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #d5d0c5;
+    border-radius: 6px;
+    background-color: white;
+    color: #333333;
+}
+
+.animal-form-grid input:focus,
+.animal-form-grid select:focus,
+.animal-management-tools input:focus {
+    outline: none;
+    border-color: #315b46;
+}
+
+.animal-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.save-animal-button,
+.cancel-animal-button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.save-animal-button {
+    background-color: #315b46;
+    color: white;
+}
+
+.cancel-animal-button {
+    background-color: #dad6cc;
+    color: #333333;
+}
+
+.admin-animal-list {
+    margin-top: 25px;
+}
+
+.animal-list-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.animal-list-heading h2 {
+    color: #315b46;
+}
+
+.animal-list-heading span {
+    color: #777777;
+}
+
+.admin-animal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.admin-animal-card {
+    background-color: #fffefa;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.admin-animal-card > img,
+.animal-image-placeholder {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
+
+.animal-image-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E2DED4;
+    color: #777777;
+}
+
+.admin-animal-info {
+    padding: 18px;
+}
+
+.animal-card-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.animal-card-heading h3 {
+    color: #315B46;
+}
+
+.animal-status {
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    background-color: #E5E5E5;
+    color: #555555;
+}
+
+.animal-status.available {
+    background-color: #DDEBDD;
+    color: #315B46;
+}
+
+.animal-status.pending {
+    background-color: #FFF0C2;
+    color: #89650A;
+}
+
+.animal-status.adopted {
+    background-color: #DCE7F4;
+    color: #315B7A;
+}
+
+.admin-animal-info > p {
+    color: #777777;
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+.admin-animal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 17px;
+}
+
+.admin-animal-actions button {
+    flex: 1;
+    padding: 9px;
+    border: none;
+    border-radius: 5px;
+    background-color: #315B46;
+    color: white;
+    cursor: pointer;
+}
+
+.admin-animal-actions .archive-animal-button {
+    background-color: #E6E1D7;
+    color: #444444;
+}
+
+.empty-animal-list {
+    background-color: #FFFEFA;
+    border-radius: 8px;
+    padding: 35px;
+    text-align: center;
+    color: #777777;
+}
+
+@media (max-width: 1100px) {
+    .admin-animal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    .animal-form-grid,
+    .admin-animal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .animal-management-tools {
+        flex-direction: column;
+    }
+
+    .animal-management-tools input {
+        min-width: 0;
+    }
+
+    .animal-management-tools > * {
+        width: 100%;
+    }
+
+    .animal-list-heading {
+        align-items: flex-start;
+        gap: 10px;
+    }
+}

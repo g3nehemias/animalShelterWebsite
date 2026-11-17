@@ -8,6 +8,7 @@ import AdoptionApplication from './pages/AdoptionApplication';
 import MyApplications from './pages/MyApplications';
 import Account from './pages/Account';
 import AdminDashboard from './pages/AdminDashboard';
+import AdminAnimals from './pages/AdminAnimals';
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -40,95 +41,81 @@ function App() {
         date: '10/25/2026',
         status: 'Rejected'
     }
-]);
-
-  if (currentPage === 'home') {
-    return (
-        <Home
-            onNavigate={(page, data) => {
-                if (page === 'animal-details') {
-                    setSelectedAnimal(data);
-                    setCurrentPage('animal-details');
-                } else {
-                    setCurrentPage(page);
-                }
-            }}
-            onBrowseAnimals={() => setCurrentPage('animals')}
-        />
-    );
-}
-
-if (currentPage === 'animals') {
-    return (
-        <Animals
-            onNavigate={(page, data) => {
-                if (page === 'animal-details') {
-                    setSelectedAnimal(data);
-                    setCurrentPage('animal-details');
-                } else {
-                    setCurrentPage(page);
-                }
-            }}
-        />
-    );
-}
-
-if (currentPage === 'animal-details') {
-    return (
-        <AnimalDetails
-            animal={selectedAnimal}
-            onNavigate={(page) => setCurrentPage(page)}
-        />
-    );
-}
-
-if (currentPage === 'application') {
-    return (
-        <AdoptionApplication
-            animal={selectedAnimal}
-            onNavigate={(page) => setCurrentPage(page)}
-            onSubmitApplication={(application) => {
-                setApplications((previousApplications) => [
-                    application,
-                    ...previousApplications
-                ]);
-                setCurrentPage('applications');
-            }}
-        />
-    );
-}
-
-if (currentPage === 'applications') {
-    return (
-        <MyApplications
-            applications={applications}
-            onNavigate={(page) => setCurrentPage(page)}
-        />
-    );
-}
-
-if (currentPage === 'account') {
-    return (
-        <Account
-            onNavigate={(page) => setCurrentPage(page)}
-        />
-    );
-}
-
-if (currentPage === 'admin-dashboard') {
-  return (
-    <AdminDashboard
-      onNaviagte={(page) => setCurrentPage(page)}
-      onLogout={() => {
-        setIsAdmin(false);
-        setEmail('');
-        setPassword('');
-        setMessage('');
-        setCurrentPage('login');
-      }}
-    />
-  );
-}
+  ]);
+  const [animals, setAnimals] = useState([
+    {
+        id: 1,
+        name: 'Buddy',
+        species: 'Dog',
+        breed: 'Golden Retriever',
+        age: '2 years',
+        gender: 'Male',
+        size: 'Large',
+        image: 'https://images.unsplash.com/photo-1633722715463-d30f4f325e24?w=600',
+        status: 'Available',
+        archived: false
+    },
+    {
+        id: 2,
+        name: 'Luna',
+        species: 'Cat',
+        breed: 'Domestic Shorthair',
+        age: '1 year',
+        gender: 'Female',
+        size: 'Small',
+        image: 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=600',
+        status: 'Available',
+        archived: false
+    },
+    {
+        id: 3,
+        name: 'Max',
+        species: 'Dog',
+        breed: 'German Shepherd',
+        age: '3 years',
+        gender: 'Male',
+        size: 'Large',
+        image: 'https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=600',
+        status: 'Available',
+        archived: false
+    },
+    {
+        id: 4,
+        name: 'Bella',
+        species: 'Dog',
+        breed: 'Beagle',
+        age: '8 months',
+        gender: 'Female',
+        size: 'Medium',
+        image: 'https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=600',
+        status: 'Available',
+        archived: false
+    },
+    {
+        id: 5,
+        name: 'Oliver',
+        species: 'Cat',
+        breed: 'Tabby',
+        age: '2 years',
+        gender: 'Male',
+        size: 'Small',
+        image: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600',
+        status: 'Available',
+        archived: false
+    },
+    {
+        id: 6,
+        name: 'Charlie',
+        species: 'Dog',
+        breed: 'Labrador Retriever',
+        age: '4 years',
+        gender: 'Male',
+        size: 'Large',
+        image: 'https://images.unsplash.com/photo-1552053831-71594a27632d?w=600',
+        status: 'Available',
+        archived: false
+    }
+  ]);
 
   function handleLogin(event) {
     event.preventDefault();
@@ -146,6 +133,139 @@ if (currentPage === 'admin-dashboard') {
     /* setMessage ('Login form is ready! Backend authentication will be connected later.'); <- This will be used later */
     setIsAdmin(false);
     setCurrentPage('home');
+  }
+
+  function handleSaveAnimal(animal) {
+    setAnimals((previousAnimals) => {
+      const existingAnimal = previousAnimals.some(
+          (item) => item.id === animal.id
+      );
+
+      if (existingAnimal) {
+          return previousAnimals.map((item) =>
+              item.id === animal.id ? animal : item
+          );
+      }
+
+      return [animal, ...previousAnimals];
+    });
+  }
+
+  function handleArchiveAnimal(animalId) {
+    setAnimals((previousAnimals) =>
+        previousAnimals.map((animal) =>
+            animal.id === animalId
+                ? { ...animal, archived: !animal.archived }
+                : animal
+        )
+    );
+  } 
+
+  if (currentPage === 'home') {
+    return (
+        <Home
+            onNavigate={(page, data) => {
+                if (page === 'animal-details') {
+                    setSelectedAnimal(data);
+                    setCurrentPage('animal-details');
+                } else {
+                    setCurrentPage(page);
+                }
+            }}
+            onBrowseAnimals={() => setCurrentPage('animals')}
+        />
+    );
+  }
+
+  if (currentPage === 'animals') {
+      return (
+          <Animals
+              animals={animals}
+              onNavigate={(page, data) => {
+                  if (page === 'animal-details') {
+                      setSelectedAnimal(data);
+                      setCurrentPage('animal-details');
+                  } else {
+                      setCurrentPage(page);
+                  }
+              }}
+          />
+      );
+  }
+
+  if (currentPage === 'animal-details') {
+      return (
+          <AnimalDetails
+              animal={selectedAnimal}
+              onNavigate={(page) => setCurrentPage(page)}
+          />
+      );
+  }
+
+  if (currentPage === 'application') {
+      return (
+          <AdoptionApplication
+              animal={selectedAnimal}
+              onNavigate={(page) => setCurrentPage(page)}
+              onSubmitApplication={(application) => {
+                  setApplications((previousApplications) => [
+                      application,
+                      ...previousApplications
+                  ]);
+                  setCurrentPage('applications');
+              }}
+          />
+      );
+  }
+
+  if (currentPage === 'applications') {
+      return (
+          <MyApplications
+              applications={applications}
+              onNavigate={(page) => setCurrentPage(page)}
+          />
+      );
+  }
+
+  if (currentPage === 'account') {
+      return (
+          <Account
+              onNavigate={(page) => setCurrentPage(page)}
+          />
+      );
+  }
+
+  if (currentPage === 'admin-dashboard') {
+    return (
+      <AdminDashboard
+        onNavigate={(page) => setCurrentPage(page)}
+        onLogout={() => {
+          setIsAdmin(false);
+          setEmail('');
+          setPassword('');
+          setMessage('');
+          setCurrentPage('login');
+        }}
+      />
+    );
+  }
+
+  if (currentPage === 'admin-animals') {
+    return (
+        <AdminAnimals
+            animals={animals}
+            onNavigate={(page) => setCurrentPage(page)}
+            onSaveAnimal={handleSaveAnimal}
+            onArchiveAnimal={handleArchiveAnimal}
+            onLogout={() => {
+              setIsAdmin(false);
+              setEmail('');
+              setPassword('');
+              setMessage('');
+              setCurrentPage('login');
+            }}
+        />
+    );
   }
 
   if (isRegistering) {

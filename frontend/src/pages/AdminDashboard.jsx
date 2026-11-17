@@ -1,6 +1,6 @@
 import './AdminDashboard.css'
 
-function AdminDashboard({ onNaviagte, onLogout }) {
+function AdminDashboard({ onNavigate, onLogout }) {
     return (
         <div className="admin-page">
             <aside className="admin-sidebar">
@@ -14,7 +14,9 @@ function AdminDashboard({ onNaviagte, onLogout }) {
                         Dashboard
                     </button>
 
-                    <button className="admin-menu-item" disabled>
+                    <button className="admin-menu-item"
+                        onClick={() => onNavigate('admin-animals')}
+                    >
                         Animal Management
                     </button>
 
@@ -24,6 +26,10 @@ function AdminDashboard({ onNaviagte, onLogout }) {
 
                     <button className="admin-menu-item" disabled>
                         Medical Records
+                    </button>
+
+                    <button className="admin-menu-item" disabled>
+                        Appointments
                     </button>
                     
                     <button className="admin-menu-item" disabled>
