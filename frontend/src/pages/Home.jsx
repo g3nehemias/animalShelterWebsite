@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './Home.css';
 
 const featuredAnimals = [
@@ -26,12 +25,6 @@ const featuredAnimals = [
 ];
 
 function Home({ onBrowseAnimals, onNavigate }) {
-    const [search, setSearch] = useState('');
-
-    const filteredAnimals = featuredAnimals.filter((animal) =>
-        '${animal.name} ${animal.species} ${animal.breed}'.toLowerCase().includes(search.toLowerCase())
-    );
-
     return (
         <div className="home-page">
 
@@ -50,47 +43,29 @@ function Home({ onBrowseAnimals, onNavigate }) {
 
             <main className="home-content">
                 <section className="home-heading">
-                    <h1>Available Animals for Adoption</h1>
+                    <h1>Featured Animals</h1>
                     <p>Meet your new best friend and give an animal a loving home.</p>
                 </section>
 
-                <section className="home-search">
-                    <input
-                        type="text"
-                        placeholder="Search animals..."
-                        value={search}
-                        onChnage={(event) => setSearch(event.target.vale)}
-                    />
-
-                    <button type="button">
-                        Search
-                    </button>
-                </section>
-
                 <section className="featured-animals">
-                    {filteredAnimals.length > 0 ? (
-                        filteredAnimals.map((animal) => (
-                            <article className="home-aniaml-card" key={animal.id}>
-                                <img src={animal.image} alt={animal.name} />
+                    {featuredAnimals.map((animal) => (
+                        <article className="home-animal-card" key={animal.id}>
+                            <img src={animal.image} alt={animal.name} />
 
-                                <div className="home-animal-info">
-                                    <h2>{animal.name}</h2>
-                                    <p>{animal.species} / {animal.breed}</p>
+                            <div className="home-animal-info">
+                                <h2>{animal.name}</h2>
+                                <p>{animal.species} / {animal.breed}</p>
 
-                                    <button
-                                        type="button"
-                                        onClick={() => onNavigate('animal-details', animal)}
-                                    >
-                                        View Details 
-                                    </button>
-                                </div>
-                            </article>
-                        ))
-                    ) : (
-                    <p className="empty-search">No animals found</p>
-                    )}
+                                <button
+                                    type="button"
+                                    onClick={() => onNavigate('animal-details', animal)}
+                                >
+                                    View Details 
+                                </button>
+                            </div>
+                        </article>
+                    ))}
                 </section>
-
             </main>
         </div>
     );

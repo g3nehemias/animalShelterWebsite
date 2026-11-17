@@ -64,15 +64,23 @@ const animals = [
     }
 ];
 
-function Animals() {
+function Animals({ onNavigate }) {
     const [search, setSearch] = useState('');
     const [speciesFilter, setSpeciesFilter] = useState('All');
     const [sizeFilter, setSizeFilter] = useState('All');
 
     const filteredAnimals = animals.filter((animal) => {
-        const matchesSearch = 
-            '${animal.name} ${animal.species} ${animal.breed}'.toLowerCase().includes(search.toLowerCase());
-        
+        const searchText = search.trim().toLowerCase();
+
+        const matchesSearch = [
+            animal.name,
+            animal.species,
+            animal.breed,
+            animal.age,
+            animal.gender,
+            animal.size
+        ].some((value) => value.toLowerCase().includes(searchText));
+            
         const matchesSpecies =
             speciesFilter === "All" || animal.species === speciesFilter;
 
@@ -84,6 +92,20 @@ function Animals() {
 
     return (
         <div className="animals-page">
+
+            <nav className="navbar">
+                <div className = "navbar-brand">
+                    Animal Shelter Management System
+                </div>
+
+                <div className="navbar-links">
+                    <button onClick={() => onNavigate('home')}>Home</button>
+                    <button onClick={() => onNavigate('animals')}>Browse Animals</button>
+                    <button onClick={() => onNavigate('applications')}>My Applications</button>
+                    <button onClick={() => onNavigate('account')}>Account</button>
+                </div>
+            </nav>
+
             <header className="animals-header">
                 <h1>Find Your Best New Friend</h1>
                 <p>Browse our animals looking for their forever homes</p>
@@ -91,7 +113,7 @@ function Animals() {
 
             <main className="animals-content">
 
-                <section className="animal-filters">
+                <section className="animals-filters">
                     <input
                         type="text"
                         placeholder="Search by name or breed..."

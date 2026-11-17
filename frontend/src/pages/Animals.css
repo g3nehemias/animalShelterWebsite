@@ -1,66 +1,117 @@
 .animals-page {
     min-height: 100vh;
+    width: 100%;
     background-color: #EDE9DF;
 }
 
+/* Navigation */
+.navbar {
+    width: 100%;
+    min-height: 120px;
+    padding: 20px 6%;
+    background-color: #315b46;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+}
+
+.navbar-brand {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.navbar-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 35px;
+}
+
+.navbar-links button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.navbar-links button:hover {
+    text-decoration: underline;
+}
+
+/* Page Heading */
 .animal-header {
     text-align: center;
-    padding: 50px 20px 30px;
+    padding: 40px 5% 25px;
 }
 
 .animals-header h1 {
     color: #315b46;
     font-size: 32px;
-    margin-bottom: 10px;
+    margin: 10px;
+    text-align: center;
 }
 
 .animals-header p {
     color: #777777;
+    text-align: center;
 }
 
+/* Main Content */
 .animals-content {
-    width: min(1200px, 90%);
-    margin: 0 auto;
-    padding-bottom: 50px;
+    width: 100%;
+    padding: 20px 5%;
+    box-sizing: border-box;
 }
 
 .animals-filters {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
     flex-wrap: wrap;
 }
 
 .animals-filters input,
-.animal-filters select {
+.animals-filters select {
     padding: 12px 15px;
     border: 1px solid #cccccc;
-    border-radius: 8px;
-    background-color: #ffffff;
+    border-radius: 6px;
+    background-color: white;
     color: #333333;
     font-size: 15px;
 }
 
-.animal-filters input {
-    flex: 1;
-    min-width: 200px;
+.animals-filters input {
+    width: 300px;
+    min-width: 80%;
 }
 
-.animals-filter select {
+.animals-filters select {
     min-width: 150px;
 }
 
+/* Animal Cards */
 .animals-grid {
     display: grid;
-    grid-template-columns: repeat (3, minmax(0, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
 }
 
 .animal-card {
+    width: 230px;
+    min-width: 0;
     background-color: #fffefa;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 3px 10px rgbad(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .animal-card img {
@@ -71,22 +122,27 @@
 }
 
 .animal-card-info {
-    padding: 20px;
+    padding: 18px;
+    text-align: center;
 }
 
 .animal-card-info h2 {
+    color: #315b46;
+    margin-bottom: 8px;
+}
+
+.animal-card-info p {
     color: #777777;
     margin: 6px 0;
 }
 
 .animal-card-info button {
-    width: 100%;
-    margin-top: 15px;
-    padding: 11px;
+    margin-top: 12px;
+    padding: 10px 20px;
     background-color: #315b46;
     color: white;
     border: none;
-    border-radius: 7px;
+    border-radius: 6px;
     cursor: pointer;
 }
 
@@ -100,6 +156,7 @@
     grid-column: 1 / -1;
 }
 
+/* Responsive Layout */
 @media (max-width: 850px) {
     .animals-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -109,6 +166,10 @@
 @media (max-width: 550px) {
     .animals-grid {
         grid-template-columns: 1fr;
+    }
+
+    .animal-header h1 {
+        font-size: 25px;
     }
 
     .animals-filters {

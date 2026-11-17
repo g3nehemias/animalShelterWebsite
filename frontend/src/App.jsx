@@ -24,13 +24,19 @@ function App() {
             console.log('Selected animal:', data);
           }
         }}
-      onBrowseAnimals={() => setCurrentPage('animals')}
+        onBrowseAnimals={() => setCurrentPage('animals')}
       />
     );
   }
 
   if (currentPage === 'animals') {
-    return <Animal />;
+    return (
+      <Animals
+        onNavigate={(page) => {
+          setCurrentPage(page);
+        }}
+      />
+    );
   }
 
   function handleLogin(event) {

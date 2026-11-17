@@ -1,9 +1,6 @@
-* {
-    box-sizing: border-box;
-}
-
 .home-page {
     min-height: 100vh;
+    width: 100%;
     background-color: #ede9df;
 }
 
@@ -11,12 +8,14 @@
 .navbar {
     width: 100%;
     min-height: 100px;
-    padding: 20px 6%;
+    padding: 20px 5%;
     background-color: #315b46;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 18px;
+    box-sizing: border-box;
 }
 
 .navbar-brand {
@@ -30,6 +29,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 35px;
 }
 
@@ -47,63 +47,25 @@
 
 /* Main Content */
 .home-content {
-    width: min(1200px, 90%);
-    margin: 0 auto;
-    padding: 20px 0;
+    width: 100%;
+    padding: 45px 5%;
+    box-sizing: border-box;
 }
 
 .home-heading {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 }
 
 .home-heading h1 {
     color: #315b46;
     font-size: clamp(25px, 3vw, 34px);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .home-heading p {
-    color: #777;
-    font-size: 15px;
-}
-
-/* Search */
-.home-search {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 0 auto 40px;
-    max-width: 650px;
-}
-
-.home-search input {
-    flex: 1;
-    min-width: 0;
-    padding: 13px 15px;
-    border: 1px solid #d5d5d0;
-    border-radius: 7px;
-    background: white;
-    color: #333;
-    font-size: 14px;
-}
-
-.home-search input::placeholder {
-    color: #999;
-}
-
-.home-search button {
-    padding: 13px 25px;
-    border: none;
-    border-radius: 7px;
-    background: #315b46;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.home-search button:hover {
-        background: #244634;
+    color: #777777;
+    font-size: 16px;
 }
 
 /* Animal Cards */
@@ -111,14 +73,16 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 25px;
+    width: 100%;
 }
 
 .home-animal-card {
+    width: 100%;
     min-width: 0;
-    overflow: hidden;
     background: #fffefa;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
 }
 
 .home-aniaml-card img {
@@ -128,13 +92,13 @@
     object-fit: cover;
 }
 
-.home-animal.info {
-    padding: 20px;
+.home-animal-info {
+    padding: 18px;
+    text-align: center;
 }
 
 .home-animal-info h2 {
     color: #315b46;
-    font-size: 21px;
     margin-top: 8px;
 }
 
@@ -145,13 +109,11 @@
 }
 
 .home-animal-info button {
-    width: 100%;
-    padding: 11px;
+    background-color: #315b46;
+    color: white;
     border: none;
     border-radius: 6px;
-    background: #315b46;
-    color: white;
-    font-weight: 600;
+    padding: 10px 20px;
     cursor: pointer;
 }
 
@@ -159,38 +121,24 @@
     background: #244634;
 }
 
-.empty-search {
-    grid-column: 1 / -1;
-    text-align: center;
-    color: #777;
-}
 
 /* Responsive Layout */
 @media (max-width: 850px) {
-    .navbar {
-        justify-content: center;
-    }
-
-    .navbar-links {
-        justify-content: center;
-        gap: 18px;
-    }
-
     .featured-animals {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
     .featured-animals {
         grid-template-columns: 1fr;
     }
 
-    .home-search {
-        flex-direction: column
+    .navbar-links {
+        gap: 15px;
     }
 
-    .home-search button {
-        width: 100%;
+    .home-heading h1 {
+        font-size: 25px;
     }
 }
