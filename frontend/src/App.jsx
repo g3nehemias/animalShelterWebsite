@@ -6,6 +6,7 @@ import Animals from './pages/Animals';
 import AnimalDetails from './pages/AnimalDetails';
 import AdoptionApplication from './pages/AdoptionApplication';
 import MyApplications from './pages/MyApplications';
+import Account from './pages/Account';
 
 function App() {
   const [showPassword, setShowPassword] = useState(false);
@@ -99,6 +100,14 @@ if (currentPage === 'applications') {
     return (
         <MyApplications
             applications={applications}
+            onNavigate={(page) => setCurrentPage(page)}
+        />
+    );
+}
+
+if (currentPage === 'account') {
+    return (
+        <Account
             onNavigate={(page) => setCurrentPage(page)}
         />
     );

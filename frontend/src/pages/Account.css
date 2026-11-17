@@ -1,0 +1,156 @@
+.account-page {
+    min-height: 100vh;
+    background-color: #ede9df;
+}
+
+.account-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 25px;
+}
+
+.account-header {
+    margin-bottom: 30px;
+}
+
+.account-header h1 {
+    color: #315b46;
+    margin-bottom: 8px;
+}
+
+.account-header p {
+    color: #777777;
+}
+
+.account-form {
+    background-color: #fffefa;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08)
+}
+
+.account-section {
+    margin-bottom: 35px;
+}
+
+.account-section h2 {
+    color: #315b46;
+    border-bottom: 1px solid #e2ded4;
+    padding-bottom: 12px;
+    margin-bottom: 22px;
+}
+
+.account-grid {
+    display: grid;
+    grid-template-columns: repeatr(2, 1fr);
+    gap: 20px;
+}
+
+.account-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.account-field label {
+    color: #315b46;
+    font-weight: 600;
+}
+
+.account-field input {
+    padding: 12px;
+    border: 1px solid #d5d0c5;
+    border-radius: 6px;
+    font-size: 15px;
+    background-color: white;
+    color: #333333;
+}
+
+.account-field input:disabled {
+    background-color: #f1efe9;
+    color: #555555;
+    cursor: not-allowed;
+}
+
+.account-field input:focus {
+    outline: none;
+    border-color: #315b45;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.account-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.edit-account-button,
+.save-account-button,
+.cancel-edit-button,
+.logout-button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 6px;
+    cursor: pionter;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.edit-account-button,
+.save-account-button {
+    background: #315b45;
+    color: white;
+}
+
+.edit-account-button:hover,
+.save-account-button:hover {
+    background-color: #244735;
+}
+
+.cancel-edit-button {
+    background-color: #DAD6CC;
+    color: #333333;
+}
+
+.account-logout {
+    margin-top : 30px;
+    padding: 25px 30px;
+    background-color: #fffefa;
+    border-radius: 12px;
+}
+
+.account-logout h2 {
+    color: #315b45;
+    margin-bottom: 8px;
+}
+
+.account-logout p {
+    color: #777777;
+    margin-bottom: 15px;
+}
+
+.logout-button {
+    background-color: #a94442;
+    color: white;
+}
+
+.logout-button:hover {
+    background-color: #873634;
+}
+
+@media (max-width: 650px) {
+    .account-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .account-content {
+        padding: 25px 15px;
+    }
+
+    .account-form {
+        padding: 20px;
+    }
+}
