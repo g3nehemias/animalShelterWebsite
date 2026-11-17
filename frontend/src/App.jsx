@@ -7,8 +7,10 @@ import AnimalDetails from './pages/AnimalDetails';
 import AdoptionApplication from './pages/AdoptionApplication';
 import MyApplications from './pages/MyApplications';
 import Account from './pages/Account';
+import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
+  const [isAdmin, setIsAdmin] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -113,6 +115,21 @@ if (currentPage === 'account') {
     );
 }
 
+if (currentPage === 'admin-dashboard') {
+  return (
+    <AdminDashboard
+      onNaviagte={(page) => setCurrentPage(page)}
+      onLogout={() => {
+        setIsAdmin(false);
+        setEmail('');
+        setPassword('');
+        setMessage('');
+        setCurrentPage('login');
+      }}
+    />
+  );
+}
+
   function handleLogin(event) {
     event.preventDefault();
 
@@ -120,7 +137,14 @@ if (currentPage === 'account') {
       setMessage('Please enter your email and password.');
       return;
     }
+
+    if (email === 'admin@gmail.com' && password === 'admin1') {
+      setIsAdmin(true);
+      setCurrentPage('admin-dashboard');
+      return;
+    }
     /* setMessage ('Login form is ready! Backend authentication will be connected later.'); <- This will be used later */
+    setIsAdmin(false);
     setCurrentPage('home');
   }
 
