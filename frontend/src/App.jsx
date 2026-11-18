@@ -10,9 +10,11 @@ import Account from './pages/Account';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminAnimals from './pages/AdminAnimals';
 import AdminApplications from './pages/AdminApplications';
+import AdminMedicalRecords from './pages/AdminMedicalRecords';
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
+  const [medicalRecords, setMedicalRecords] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -134,6 +136,13 @@ function App() {
     /* setMessage ('Login form is ready! Backend authentication will be connected later.'); <- This will be used later */
     setIsAdmin(false);
     setCurrentPage('home');
+  }
+
+  function handleAddMedicalRecord(record) {
+    setMedicalRecords((previousRecords) => [
+      record,
+      ...previousRecords
+    ]);
   }
 
   function handleUpdateApplicationStatus(applicationId, newStatus) {
@@ -285,6 +294,24 @@ function App() {
         applications={applications}
         onNavigate={(page) => setCurrentPage(page)}
         onUpdateStatus={handleUpdateApplicationStatus}
+        onLogout={() => {
+          setIsAdmin(false);
+          setEmail('');
+          setPassword('');
+          setMessage('');
+          setCurrentPage('login');
+        }}
+      />
+    );
+  }
+
+  if (currentPage === 'admin-medical-records') {
+    return (
+      <AdminMedicalRecords
+        animals={animals}
+        medicalRecords={medicalRecords}
+        onNavigate={(page) => setCurrentPage(page)}
+        onAddRecord={handleAddMedicalRecord}
         onLogout={() => {
           setIsAdmin(false);
           setEmail('');

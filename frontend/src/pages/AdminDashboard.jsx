@@ -26,7 +26,9 @@ function AdminDashboard({ onNavigate, onLogout }) {
                         Applications
                     </button>
 
-                    <button className="admin-menu-item" disabled>
+                    <button className="admin-menu-item" 
+                        onClick={() => onNavigate('admin-medical-records')}
+                    >
                         Medical Records
                     </button>
 
