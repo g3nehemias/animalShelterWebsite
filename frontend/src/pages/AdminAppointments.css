@@ -1,0 +1,106 @@
+.admin-page {
+    display: flex;
+    min-height: 100vh;
+    background-color: #EDE9DF;
+}
+
+.appointment-content {
+    padding: 25px;
+}
+
+.appointment-add-button {
+    background-color: #315b46;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.appointment-form,
+.appointment-tools,
+.appointment-card {
+    background-color: #fffefa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.appointment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.appointment-form input,
+.appointment-form select,
+.appointment-tools textarea,
+.appointment-tools input,
+.appointment-tools select,
+.appointment-actions select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.appointment-tools {
+    display: flex;
+    gap: 15px;
+}
+
+.appointment-list {
+    display: grid;
+    gap: 15px;
+}
+
+.appointment-card {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.appointment-status {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.appointment-status.scheduled {
+    color: #315b46;
+}
+
+.appointment-status.completed {
+    color: #287a3d;
+}
+
+.appointnent-status.cancelled {
+    color: #833a3a;
+}
+
+.apppointment-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.appointment-actions button {
+    background-color: #b33a3a;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.appointment-empty {
+    color: #777;
+    text-align: center;
+    padding: 30px;
+}
+
+@media (max-width: 700px) {
+    .appointment-card,
+    .appointment-tools {
+        flex-direction: column;
+    }
+}

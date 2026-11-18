@@ -132,8 +132,13 @@ function AdminAnimals({
                     >
                         Medical Records
                     </button>
+
+                    <button className="admin-menu-item" 
+                        onClick={() => onNavigate('admin-appointments')}
+                    >
+                        Appointments
+                    </button>
                     
-                    <button className="admin-menu-item" disabled>Appointments</button>
                     <button className="admin-menu-item" disabled>Inventory</button>
                     <button className="admin-menu-item" disabled>User Management</button>
                 </nav>

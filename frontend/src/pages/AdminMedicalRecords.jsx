@@ -101,7 +101,9 @@ function AdminMedicalRecords({
                         Medical Records
                     </button>
 
-                    <button className="admin-menu-item" disabled>
+                    <button className="admin-menu-item"
+                        onClick={() => onNavigate('admin-appointments')}
+                    >
                         Appointments
                     </button>
 
@@ -231,7 +233,7 @@ function AdminMedicalRecords({
 
                     <div className="medical-record-list">
                         {filteredRecords.length === 0 ? (
-                            <p ClassName="medical-empty">
+                            <p className="medical-empty">
                                 No medical records found
                             </p>
                         ) : (

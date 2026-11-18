@@ -32,7 +32,9 @@ function AdminDashboard({ onNavigate, onLogout }) {
                         Medical Records
                     </button>
 
-                    <button className="admin-menu-item" disabled>
+                    <button className="admin-menu-item"
+                        onClick={() => onNavigate('admin-appointments')}
+                    >
                         Appointments
                     </button>
                     

@@ -11,10 +11,12 @@ import AdminDashboard from './pages/AdminDashboard';
 import AdminAnimals from './pages/AdminAnimals';
 import AdminApplications from './pages/AdminApplications';
 import AdminMedicalRecords from './pages/AdminMedicalRecords';
+import AdminAppointments from './pages/AdminAppointments';
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [medicalRecords, setMedicalRecords] = useState([]);
+  const [appointments, setAppointments] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -138,10 +140,35 @@ function App() {
     setCurrentPage('home');
   }
 
+  function handleUpdateAppointment(appointmentId, newStatus) {
+    setAppointments((previousAppointments) =>
+      previousAppointments.map((appointment) =>
+        appointment.id === appointmentId
+          ? { ...appointment, status: newStatus }
+          : appointment
+      )
+    );
+  }
+
+  function handleDeleteAppointment(appointmentId) {
+    setAppointments((previousAppointments) =>
+      previousAppointments.filter(
+        (appointment) => appointment.id !== appointmentId
+      )
+    );
+  }
+
   function handleAddMedicalRecord(record) {
     setMedicalRecords((previousRecords) => [
       record,
       ...previousRecords
+    ]);
+  }
+
+  function handleAddAppointment(appointment) {
+    setAppointments((previousAppointments) => [
+      appointment,
+      ...previousAppointments
     ]);
   }
 
@@ -325,6 +352,26 @@ function App() {
 
   if (isRegistering) {
     return <Register onBackToLogin={() => setIsRegistering(false)}/>;
+  }
+
+  if (currentPage === 'admin-appointments') {
+    return (
+      <AdminAppointments
+        animals={animals}
+        appointments={appointments}
+        onNavigate={(page) => setCurrentPage(page)}
+        onAddAppointment={handleAddAppointment}
+        onUpdateAppointment={handleUpdateAppointment}
+        onDeleteAppointment={handleDeleteAppointment}
+        onLogout={() => {
+          setIsAdmin(false);
+          setEmail('');
+          setPassword('');
+          setMessage('');
+          setCurrentPage('login');
+        }}
+      />
+    );
   }
 
   return (
