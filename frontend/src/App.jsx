@@ -9,6 +9,7 @@ import MyApplications from './pages/MyApplications';
 import Account from './pages/Account';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminAnimals from './pages/AdminAnimals';
+import AdminApplications from './pages/AdminApplications';
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -133,6 +134,16 @@ function App() {
     /* setMessage ('Login form is ready! Backend authentication will be connected later.'); <- This will be used later */
     setIsAdmin(false);
     setCurrentPage('home');
+  }
+
+  function handleUpdateApplicationStatus(applicationId, newStatus) {
+    setApplications((previousApplications) =>
+      previousApplications.map((application) =>
+        application.id === applicationId
+          ? { ...application, status: newStatus }
+          : application
+      )
+    );
   }
 
   function handleSaveAnimal(animal) {
@@ -265,6 +276,23 @@ function App() {
               setCurrentPage('login');
             }}
         />
+    );
+  }
+
+  if (currentPage === 'admin-applications') {
+    return (
+      <AdminApplications
+        applications={applications}
+        onNavigate={(page) => setCurrentPage(page)}
+        onUpdateStatus={handleUpdateApplicationStatus}
+        onLogout={() => {
+          setIsAdmin(false);
+          setEmail('');
+          setPassword('');
+          setMessage('');
+          setCurrentPage('login');
+        }}
+      />
     );
   }
 
