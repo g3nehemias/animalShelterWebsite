@@ -62,7 +62,9 @@ function AdminApplications ({
                         Inventory
                     </button>
 
-                    <button className="admin-menu-item" disabled>
+                    <button className="admin-menu-item" 
+                        onClick={() => onNavigate('admin-users')}
+                    >
                         User Management
                     </button>
                 </nav>

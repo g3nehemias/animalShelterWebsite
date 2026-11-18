@@ -13,6 +13,7 @@ import AdminApplications from './pages/AdminApplications';
 import AdminMedicalRecords from './pages/AdminMedicalRecords';
 import AdminAppointments from './pages/AdminAppointments';
 import AdminInventory from './pages/AdminInventory';
+import AdminUsers from './pages/AdminUser';
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -160,6 +161,35 @@ function App() {
       description: 'Cleaning and disinfecting solution.'
     }
   ]);
+  const [users, setUsers] = useState([
+    {
+        id: 1,
+        firstName: 'Admin',
+        lastName: 'User',
+        email: 'admin@gmail.com',
+        phone: '',
+        role: 'Admin',
+        status: 'Active'
+    },
+    {
+        id: 2,
+        firstName: 'John',
+        lastName: 'Smith',
+        email: 'john@example.com',
+        phone: '417-555-0101',
+        role: 'Staff',
+        status: 'Active'
+    },
+    {
+        id: 3,
+        firstName: 'Sarah',
+        lastName: 'Johnson',
+        email: 'sarah@example.com',
+        phone: '417-555-0102',
+        role: 'Adopter',
+        status: 'Active'
+    }
+  ]);
 
   function handleLogin(event) {
     event.preventDefault();
@@ -177,6 +207,26 @@ function App() {
     /* setMessage ('Login form is ready! Backend authentication will be connected later.'); <- This will be used later */
     setIsAdmin(false);
     setCurrentPage('home');
+  }
+
+  function handleAddUser(user) {
+    setUsers((previousUsers) => [user, ...previousUsers]);
+  }
+
+  function handleUpdateUser(userId, updatedUser) {
+      setUsers((previousUsers) =>
+          previousUsers.map((user) =>
+              user.id === userId
+                  ? { ...user, ...updatedUser }
+                  : user
+          )
+      );
+  }
+
+  function handleDeleteUser(userId) {
+      setUsers((previousUsers) =>
+          previousUsers.filter((user) => user.id !== userId)
+      );
   }
 
   function handleUpdateAppointment(appointmentId, newStatus) {
@@ -452,6 +502,25 @@ function App() {
           setCurrentPage('login');
         }}
       />
+    );
+  }
+
+  if (currentPage === 'admin-users') {
+    return (
+        <AdminUsers
+            users={users}
+            onNavigate={(page) => setCurrentPage(page)}
+            onAddUser={handleAddUser}
+            onUpdateUser={handleUpdateUser}
+            onDeleteUser={handleDeleteUser}
+            onLogout={() => {
+                setIsAdmin(false);
+                setEmail('');
+                setPassword('');
+                setMessage('');
+                setCurrentPage('login');
+            }}
+        />
     );
   }
 

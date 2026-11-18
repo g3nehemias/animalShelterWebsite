@@ -144,7 +144,11 @@ function AdminAnimals({
                     >
                         Inventory
                     </button>
-                    <button className="admin-menu-item" disabled>User Management</button>
+                    <button className="admin-menu-item"
+                        onClick={() => onNavigate('admin-users')}
+                    >
+                        User Management
+                    </button>
                 </nav>
 
                 <button
