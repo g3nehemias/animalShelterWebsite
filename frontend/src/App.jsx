@@ -12,6 +12,7 @@ import AdminAnimals from './pages/AdminAnimals';
 import AdminApplications from './pages/AdminApplications';
 import AdminMedicalRecords from './pages/AdminMedicalRecords';
 import AdminAppointments from './pages/AdminAppointments';
+import AdminInventory from './pages/AdminInventory';
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -121,6 +122,44 @@ function App() {
         archived: false
     }
   ]);
+  const [inventory, setInventory] = useState([
+    {
+      id: 1,
+      name: 'Dry Dog Food',
+      category: 'Food',
+      quantity: 25,
+      unit: 'Bags',
+      minimumStock: 10,
+      description: 'Regular dry food for dogs.'
+    },
+    {
+      id: 2,
+      name: 'Cat Food',
+      category: 'Food',
+      quantity: 8,
+      unit: 'Bags',
+      minimumStock: 10,
+      description: 'Dry food for cats.'
+    },
+    {
+      id: 3,
+      name: 'Medical Gloves',
+      category: 'Medical',
+      quantity: 50,
+      unit: 'Boxes',
+      minimumStock: 15,
+      description: 'Disposable veterinary gloves.'
+    },
+    {
+      id: 4,
+      name: 'Disinfectant',
+      category: 'Cleaning',
+      quantity: 5,
+      unit: 'Bottles',
+      minimumStock: 10,
+      description: 'Cleaning and disinfecting solution.'
+    }
+  ]);
 
   function handleLogin(event) {
     event.preventDefault();
@@ -155,6 +194,29 @@ function App() {
       previousAppointments.filter(
         (appointment) => appointment.id !== appointmentId
       )
+    );
+  }
+
+  function handleAddItem(item) {
+    setInventory((previousInventory) => [
+      item,
+      ...previousInventory
+    ]);
+  }
+
+  function handleUpdateItem(itemId, updatedItem) {
+    setInventory((previousInventory) =>
+      previousInventory.map((item) =>
+        item.id === itemId
+          ? { ...item, ...updatedItem }
+          : item
+      )
+    );
+  }
+
+  function handleDeleteItem(itemId) {
+    setInventory((previousInventory) =>
+      previousInventory.filter((item) => item.id !== itemId)
     );
   }
 
@@ -363,6 +425,25 @@ function App() {
         onAddAppointment={handleAddAppointment}
         onUpdateAppointment={handleUpdateAppointment}
         onDeleteAppointment={handleDeleteAppointment}
+        onLogout={() => {
+          setIsAdmin(false);
+          setEmail('');
+          setPassword('');
+          setMessage('');
+          setCurrentPage('login');
+        }}
+      />
+    );
+  }
+
+  if (currentPage === 'admin-inventory') {
+    return (
+      <AdminInventory
+        inventory={inventory}
+        onNavigate={(page) => setCurrentPage(page)}
+        onAddItem={handleAddItem}
+        onUpdateItem={handleUpdateItem}
+        onDeleteItem={handleDeleteItem}
         onLogout={() => {
           setIsAdmin(false);
           setEmail('');

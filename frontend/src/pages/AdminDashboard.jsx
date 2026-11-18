@@ -38,7 +38,9 @@ function AdminDashboard({ onNavigate, onLogout }) {
                         Appointments
                     </button>
                     
-                    <button className="admin-menu-item" disabled>
+                    <button className="admin-menu-item" 
+                        onClick={() => onNavigate('admin-inventory')}
+                    >
                         Inventory
                     </button>
 

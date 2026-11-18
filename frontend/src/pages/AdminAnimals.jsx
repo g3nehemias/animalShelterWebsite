@@ -138,8 +138,12 @@ function AdminAnimals({
                     >
                         Appointments
                     </button>
-                    
-                    <button className="admin-menu-item" disabled>Inventory</button>
+
+                    <button className="admin-menu-item" 
+                        onClick={() => onNavigate('admin-inventory')}
+                    >
+                        Inventory
+                    </button>
                     <button className="admin-menu-item" disabled>User Management</button>
                 </nav>
 

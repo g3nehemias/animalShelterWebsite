@@ -25,8 +25,8 @@ function AdminApplications ({
         <div className="admin-page">
              <aside className="admin-sidebar">
                 <div className="admin-brand">
-                    <h2>Animal Shelter</h2>
-                    <p>Administration</p>
+                    <h2>Shelter Admin</h2>
+                    <p>Management System</p>
                 </div>
 
                 <nav className="admin-menu">
@@ -56,7 +56,9 @@ function AdminApplications ({
                         Appointments
                     </button>
 
-                    <button className="admin-menu-item" disabled>
+                    <button className="admin-menu-item" 
+                        onClick={() => onNavigate('admin-inventory')}
+                    >
                         Inventory
                     </button>
 
